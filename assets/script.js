@@ -13,6 +13,18 @@ function fetchData(){
     })
     .then(function(weatherData) {
       console.log(weatherData)
+        //add city name 
+        var cityName = document.createElement("h2")
+        cityName.textContent = weatherData.name
+        weatherContainer.append(cityName)
+        //add date and time 
+        function getTimeAndDate() {
+            var timeAndDateEl = document.createElement("h4")
+            var timeAndDate = moment();
+            timeAndDateEl.textContent = timeAndDate.format("L" + ",  " + 'h' + ":" + "mm") 
+            weatherContainer.append(timeAndDateEl)
+        }
+        getTimeAndDate();
         //temperature  
         var temp = document.createElement("p")
         temp.textContent = "Temperature: " + weatherData.main.temp + "F"
@@ -25,10 +37,6 @@ function fetchData(){
         var humidity = document.createElement("p");
         humidity.textContent = "Humidity: " + weatherData.main.humidity + " %"
         weatherContainer.append(humidity);
-        //UV Index
-        var uvIndex = document.createElement("p");
-        // uvIndex.textContent = "UV Index: " + weatherData.main. + " %"
-        weatherContainer.append(uvIndex);
         
         //grabbing lat and long to use in second API call
         console.log(weatherData.coord.lat)
@@ -42,10 +50,12 @@ function fetchData(){
             })
             .then(function(uvWeatherData){
                 console.log(uvWeatherData)
-            }
-            )
-    
-    
+            
+            //UV Index
+            var uvIndex = document.createElement("p");
+            uvIndex.textContent = "UV Index: " + uvWeatherData.current.uvi + " %"
+            weatherContainer.append(uvIndex);
+            })
     })
     
 }

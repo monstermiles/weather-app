@@ -3,6 +3,7 @@ var button = document.querySelector("#get-weather")
 var weatherContainer = document.querySelector("#weather-container")
 var forecastContainer = document.querySelector("#forecast-container")
 
+
 // var cityName = inputField.value
 //   var apiKey = "836bcbaeb262be6529a98dc6c216e199"
 //   var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey
@@ -101,11 +102,19 @@ function megaFunction() {
                         forecastCard.classList.add("col-2")
                         
                         //add date 
-                        var forecastDate = moment.unix(forecast[i].dt).format("L")
+                        var forecastDate = document.createElement("h5")
+                        forecastDate.textContent = moment.unix(forecast[i].dt).format("L")
                         forecastCard.append(forecastDate)
 
-                        // var forecastTemp = document.createElement("h4")
-                        // forecastTemp.textContent = 
+                        //add temp
+                        var forecastTempK = forecast[i].main.temp
+                        function convertTemp(forecastTempK) {
+                            return Math.floor(((forecastTempK - 273) * 9) / 5) + 32 
+                            }
+                        var forecastTempF = convertTemp(forecastTempK)
+                        var forecastTempEl = document.createElement("p")
+                        forecastTempEl.textContent = forecastTempF + " F"
+                        forecastCard.append(forecastTempEl)
 
                     }
 

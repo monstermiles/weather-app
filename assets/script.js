@@ -1,6 +1,7 @@
 var inputField = document.querySelector("#city")
 var button = document.querySelector("#get-weather")
 var weatherContainer = document.querySelector("#weather-container")
+var forecastContainer = document.querySelector("#forecast-container")
 
 // var cityName = inputField.value
 //   var apiKey = "836bcbaeb262be6529a98dc6c216e199"
@@ -58,19 +59,19 @@ function megaFunction() {
                 .then(function (UVData) {
                     console.log(UVData)
 
-                    //UV Index
-                    var uvIndex = document.createElement("p");
-                    uvIndex.textContent = "UV Index: " + UVData.current.uvi + " %"
-                    weatherContainer.append(uvIndex);
-                    var uvi = UVData.current.uvi
-                    if (uvi > 0 && uvi <= 2) {
-                        uvIndex.classList.add("lowUVI")
-                    }
-                    if (uvi >= 2 && uvi < 5) {
-                        uvIndex.classList.add("moderateUVI")
-                    }
-                    if (uvi >= 5)
-                        uvIndex.classList.add("highUVI")
+                //UV Index
+                var uvIndex = document.createElement("p");
+                uvIndex.textContent = "UV Index: " + UVData.current.uvi + " %"
+                weatherContainer.append(uvIndex);
+                var uvi = UVData.current.uvi
+                if (uvi > 0 && uvi <= 2) {
+                    uvIndex.classList.add("lowUVI")
+                }
+                if (uvi >= 2 && uvi < 5) {
+                    uvIndex.classList.add("moderateUVI")
+                }
+                if (uvi >= 5)
+                    uvIndex.classList.add("highUVI")
                 })
             }
             fetchUvData();
@@ -85,7 +86,28 @@ function megaFunction() {
                         return response.json()
                     })
                     .then(function (forecastData) {
-                        console.log(forecastData)
+                    
+                    console.log(forecastData)
+
+                    var forecast = forecastData.list
+                    console.log(forecast)
+                    
+                    //for loop to get data for each day's weather at 3pm
+                    for (var i = 5; i < forecast.length; i = i + 8) {
+                        //create div/card
+                        var forecastCard = document.createElement("div")
+                        forecastContainer.append(forecastCard)
+                        forecastCard.classList.add("forecast-card")
+                        forecastCard.classList.add("col-2")
+                        
+                        //add date 
+                        var forecastDate = moment.unix(forecast[i].dt).format("L")
+                        forecastCard.append(forecastDate)
+
+                        // var forecastTemp = document.createElement("h4")
+                        // forecastTemp.textContent = 
+
+                    }
 
 
 

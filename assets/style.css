@@ -2,22 +2,9 @@
     background-color: aqua;
 } 
 
+/*  */
 .search-current-weather {
-    /* background-color: crimson; */
     border: 5px black solid
-}
-
-/* #weather-container {
-    background-color: brown;
-    
-} */
-
-#forecast-container {
-    background-color: coral;
-}
-
-.forecast-card {
-    background-color: cornflowerblue;
 }
 
 #city-name {
@@ -34,4 +21,18 @@
 
 .highUVI {
     background-color: red;
+}
+
+
+
+/*  */
+#forecast-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.forecast-card {
+    border: 5px black solid;
+
 }

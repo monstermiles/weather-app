@@ -1,7 +1,37 @@
 .col {
     background-color: aqua;
+} 
+
+.search-current-weather {
+    /* background-color: crimson; */
+    border: 5px black solid
 }
 
-#weather-container{
+/* #weather-container {
     background-color: brown;
+    
+} */
+
+#forecast-container {
+    background-color: coral;
+}
+
+.forecast-card {
+    background-color: cornflowerblue;
+}
+
+#city-name {
+    font-size: 40px;
+}
+
+.lowUVI {
+    background-color: chartreuse;
+}
+
+.moderateUVI {
+    background-color: yellow;
+}
+
+.highUVI {
+    background-color: red;
 }

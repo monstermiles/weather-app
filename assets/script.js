@@ -14,20 +14,23 @@ function fetchData(){
     .then(function(weatherData) {
       console.log(weatherData)
         //add city name 
-        var cityName = document.createElement("h2")
+        var cityName = document.getElementById("city-name")
         cityName.textContent = weatherData.name
-        weatherContainer.append(cityName)
         //add date and time 
         function getTimeAndDate() {
-            var timeAndDateEl = document.createElement("h4")
+            var timeAndDateEl = document.getElementById("time-and-date")
             var timeAndDate = moment();
             timeAndDateEl.textContent = timeAndDate.format("L" + ",  " + 'h' + ":" + "mm") 
             weatherContainer.append(timeAndDateEl)
         }
+        //weather icon
+        var iconEl = document.getElementById("icon-img")
+        var icon = weatherData.weather[0].icon;
+        iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
         getTimeAndDate();
         //temperature  
         var temp = document.createElement("p")
-        temp.textContent = "Temperature: " + weatherData.main.temp + "F"
+        temp.textContent = "Temperature: " + weatherData.main.temp + " F"
         weatherContainer.append(temp)
         //wind speed
         var windSpeed = document.createElement("p");
@@ -55,6 +58,15 @@ function fetchData(){
             var uvIndex = document.createElement("p");
             uvIndex.textContent = "UV Index: " + uvWeatherData.current.uvi + " %"
             weatherContainer.append(uvIndex);
+            var uvi = uvWeatherData.current.uvi
+            if (uvi > 0 && uvi < 2) {
+                uvIndex.classList.add("lowUVI")
+            }
+            if (uvi > 2 && uvi < 5) {
+                uvIndex.classList.add("moderateUVI")
+            }
+            if (uvi > 5)
+                uvIndex.classList.add("highUVI")
             })
     })
     

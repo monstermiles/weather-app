@@ -5,10 +5,8 @@ var forecastContainer = document.querySelector("#forecast-container")
 var cityNameEl = document.querySelector("#city-name-el")
 var dateAndIcon = document.querySelector("#date-and-icon")
 var container = document.querySelector(".container")
+var cityName = inputField.value
 
-// var cityName = inputField.value
-//   var apiKey = "836bcbaeb262be6529a98dc6c216e199"
-//   var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey
 function megaFunction() {
     var cityName = inputField.value
     var apiKey = "836bcbaeb262be6529a98dc6c216e199"
@@ -19,7 +17,8 @@ function megaFunction() {
         })
         .then(function (weatherData) {
             console.log(weatherData)
-            
+        
+
             //add city name 
             var cityName = document.getElementById("city-name")
             cityName.textContent = weatherData.name
@@ -145,7 +144,7 @@ function megaFunction() {
                             }
                         var forecastWindMph = convertWindSpeed(forecastWindMS)
                         var forecastWindEl = document.createElement("p")
-                        forecastWindEl.textContent = "Wind" + forecastWindMph + " mph"
+                        forecastWindEl.textContent = "Wind: " + forecastWindMph + " mph"
                         forecastCard.append(forecastWindEl)
                         
                         //add humidity
@@ -160,6 +159,7 @@ function megaFunction() {
             fetchForecastData();
         })  
 }
+
 
 
 button.addEventListener("click", megaFunction)

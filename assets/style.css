@@ -1,10 +1,29 @@
-.col {
-    background-color: aqua;
-} 
 
-/*  */
-.search-current-weather {
-    border: 5px black solid
+body {
+    background-color: powderblue;
+}
+#search-current-weather {
+    background-color: lightgreen;
+    border-radius: 25px;
+    border: 5px solid black;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px ;
+    min-width: 150px;
+    display:flex
+}
+#weather-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#name-date-icon {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#name-date-icon img {
+    display: block;
 }
 
 #city-name {
@@ -12,27 +31,49 @@
 }
 
 .lowUVI {
-    background-color: chartreuse;
+    color: green;
 }
 
 .moderateUVI {
-    background-color: yellow;
+    color: yellow;
 }
 
 .highUVI {
-    background-color: red;
+    color: red;
 }
 
 
 
 /*  */
-#forecast-container {
+.forecast-container {
     display: flex;
     justify-content: space-evenly;
+    border-radius: 25px;
+    border: 5px solid black;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px ;
+    background-color: lightgreen
 }
 
 
 .forecast-card {
-    border: 5px black solid;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px ;
+    width: 150px;
+    height: 300px;
+    background-color: #FFE891;
+}
 
+.forecast-card h5{
+    text-align: center;
+}
+
+.forecast-card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

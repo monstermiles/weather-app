@@ -6,6 +6,9 @@ var cityNameEl = document.querySelector("#city-name-el")
 var dateAndIcon = document.querySelector("#date-and-icon")
 var container = document.querySelector(".container")
 var cityName = inputField.value
+var searchHistoryContainer = document.querySelector("#history")
+var searchHistory = []
+
 
 function megaFunction() {
     var cityName = inputField.value
@@ -22,6 +25,44 @@ function megaFunction() {
             //add city name 
             var cityName = document.getElementById("city-name")
             cityName.textContent = weatherData.name
+
+            
+            
+            function renderSearchHistory() {
+                searchHistoryContainer.innerHTML = '';
+
+                for (var i = searchHistory.length - 1; i >= 0; i--) {
+                    var btn = document.createElement("button");
+                    btn.setAttribute("type", "button");
+                    btn.classList.add("history-btn", "btn-history");
+
+
+                    btn.setAttribute("data-search", searchHistory[i]);
+                    btn.textContent = searchHistory[i];
+                    searchHistoryContainer.append(btn);
+                }
+            }
+
+            function appendToHistory(cityName){
+                if (searchHistory.indexOf(cityName) !== -1) {
+                    return;
+                }
+                searchHistory.push(cityName);
+                localStorage.setItem('search-history', JSON.Stringify(searchHistory));
+                renderSearchHistory();
+            }
+
+
+            function initSearchHistory() {
+                var storedHistory = localStorage.getItem('search-history');
+                if (storedHistory) {
+                    searchHistory = JSON.parse(storedHistory);
+                }
+                renderSearchHistory();
+            }
+            
+
+
             
             //add date and time 
             function getTimeAndDate() {
